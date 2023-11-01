@@ -14,6 +14,11 @@
 | wheezy	   | Debian 7 的代号  |
 | squeeze	  | Debian 6 的代号  |
 
+
+[Debian 管理员手册](https://www.debian.org/doc/manuals/debian-handbook/index.zh-cn.html)
+
+[Debian 发行版本](https://www.debian.org/releases/)
+
 ## Alpine Linux 基础镜像
 
 Alpine 是众多 Linux 发行版中的一员，和 CentOS、Ubuntu、Archlinux 之类一样，只是一个发行版的名字，号称小巧安全，有自己的包管理工具 apk 。
@@ -29,6 +34,14 @@ Alpine Linux 除了插件了一些不必要的软件之外，特别重要的是�
 有不少软件的编译、安装和运行都用到了 *glibc* 的扩展功能，因此这些软件在使用了 *glibc* 的基础颈项上就能运行，在使用了 *musl libc* 的 alpine 上则不行。
 
 另外，Alpine 并没有像 Red Hat 或 Canonical 之类的大公司为其提供维护支持，软件包的数量也比这些发行版少很多（如果只看开箱即用的默认软件仓库，Alpine 只有 10000 个软件包，而 Ubuntu、Debian 和 Fedora 的软件包数量均大于 50000。）
+
+[Package Database](https://pkgs.alpinelinux.org/packages)
+
+[Alpine Linux Wiki](https://wiki.alpinelinux.org/wiki/Main_Page)
+
+[APKBUILD Reference](https://wiki.alpinelinux.org/wiki/APKBUILD_Reference)
+
+[APKBUILD examples](https://wiki.alpinelinux.org/wiki/APKBUILD_examples)
 
 ## :slim 镜像
 

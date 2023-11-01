@@ -48,7 +48,7 @@ RUN set -eux; \
     rm -rf "$(pecl config-get temp_dir)" "$(pecl config-get download_dir)/" && \
     apk del --no-network .phpize-deps
 
-# 安装 redis-6.0.2
+# 安装pecl扩展 redis-6.0.2
 RUN set -eux; \
     apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS && \
     pecl install --nobuild redis-6.0.2 && \
@@ -58,11 +58,21 @@ RUN set -eux; \
     rm -rf "$(pecl config-get temp_dir)" "$(pecl config-get download_dir)/" && \
     apk del --no-network .phpize-deps
 
-# 安装pecl扩展
+# 安装pecl扩展 yac yaconf
 RUN set -eux; \
-	 apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS && \
-	 pecl install yaconf-1.1.2 yac-2.3.1 && \
-	 pecl clear-cache && \
-	 docker-php-ext-enable yac yaconf && \
-	 rm -rf "$(pecl config-get temp_dir)" "$(pecl config-get download_dir)/" && \
-	 apk del --no-network .phpize-deps
+	apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS && \
+	pecl install yaconf-1.1.2 yac-2.3.1 && \
+	docker-php-ext-enable yac yaconf && \
+    pecl clear-cache && \
+	rm -rf "$(pecl config-get temp_dir)" "$(pecl config-get download_dir)/" && \
+	apk del --no-network .phpize-deps
+
+# 安装pecl扩展 phalcon-5.4.0
+RUN set -eux;\
+    apk add --no-cache --virtual .phalcon-deps $PHPIZE_DEPS pcre-dev gd-dev && \
+    pecl channel-update pecl.php.net && \
+    pecl install phalcon-5.4.0 && \
+    docker-php-ext-enable phalcon && \
+    pecl clear-cache && \
+    rm -rf "$(pecl config-get temp_dir)" "$(pecl config-get download_dir)/" && \
+    apk del --no-network .phalcon-deps
